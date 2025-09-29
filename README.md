@@ -1,10 +1,13 @@
 # RESTapi for Recipe Database
+
 ---
+
 This project is a RESTful API built with Node.js and Express that allows users to manage a recipe database. It connects to a MongoDB database to store and retrieve recipe data.
 
 ## File Structure
+
 ---
-```
+
 - `server/`: Contains the server-side code.
   - `.env`: Environment variables for configuration.
   - `src/`: Source code for the server.
@@ -12,7 +15,8 @@ This project is a RESTful API built with Node.js and Express that allows users t
       - `Recipe.js`: Mongoose schema and model for recipes.
       - `importData.js`: Script to import recipe data from a JSON file.
     - `index.js`: Main application file that sets up the Express server and connects to MongoDB.
-```
+
+
 
 ## Setup Instructions
 ---
@@ -34,9 +38,11 @@ This project is a RESTful API built with Node.js and Express that allows users t
 6. Start the server:
    ```bash
     npm run dev
-    ```
+   ```
 7. The server will be running at `http://localhost:8000`.
 
 ## API Endpoints
+
 ---
+
 - `GET /api/recipes`: Retrieve a list of all recipes.
