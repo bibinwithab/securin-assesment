@@ -2,6 +2,8 @@ import os
 import json
 from pymongo import MongoClient
 
+file_path = '../../US_recipes_null.json'
+
 with open(file_path, 'r', encoding='utf-8') as f:
     recipes = json.load(f)
 
