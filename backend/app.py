@@ -32,11 +32,18 @@ def api_info():
 
 @app.get("/api/recipes")
 def get_recipes(page: int = Query(1), limit: int = Query(10)):
-    skip = (page - 1) * limit
-    recipes = list(recipes_collection.find().sort("rating", -1).skip(skip).limit(limit))
+    if page<=0:
+        page=1
+    if limit<=0:
+        limit=1
+    skip = (page-1) * limit
+    recipes = list(recipes_collection.find().sort("rating",-1).skip(skip).limit(limit))
     for r in recipes:
         r["_id"] = str(r["_id"])
-    return recipes
+    return {
+        "page": page,
+        "recipes": recipes
+    }
 
 @app.get("/api/recipes/search")
 def search_recipes(
@@ -52,7 +59,7 @@ def search_recipes(
     if title is not None:
         filter["title"] = {"$regex": title, "$options": "i"}
     if cuisine is not None:
-        filter["cuisine"] = cuisine
+        filter["cuisine"] = {"$regex": cuisine, "$options": "i"}
     if total_time is not None:
         filter["total_time"] = total_time
     if rating is not None:
