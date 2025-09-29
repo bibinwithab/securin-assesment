@@ -5,9 +5,6 @@ const cors = require("cors");
 const { mongoose } = require("mongoose");
 const PORT = process.env.PORT || 8000;
 const Recipe = require("./models/recipeModel");
-const fs = require("fs");
-const path = require("path");
-
 const app = express();
 
 app.use(
@@ -83,7 +80,7 @@ app.get("api/recipes/search", async (req, res) => {
     .catch((err) => {
       console.log("Error fetching recipes: ", err);
       res.status(500).json({ error: "Internal server error" });
-      res.status(404).json({error: "Not found error"})
+      res.status(404).json({ error: "Not found error" });
     });
 });
 
