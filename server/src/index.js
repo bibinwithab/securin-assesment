@@ -70,7 +70,7 @@ app.get("api/recipes/search", async (req, res) => {
     filter.total_time = { total_time };
   }
   if (rating) {
-    filter.rating = { rating };
+    filter.rating = { rating } || 4;
   }
 
   await Recipe.find(filter)
