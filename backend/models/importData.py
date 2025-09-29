@@ -8,7 +8,7 @@ with open(file_path, 'r', encoding='utf-8') as f:
     recipes = json.load(f)
 
 client = MongoClient('mongodb+srv://admin:admin@cluster0.toiwrnt.mongodb.net/')
-db = client.get_database()
+db = client.get_database('test')
 recipe_collection = db['recipes']
 
 def import_data():
